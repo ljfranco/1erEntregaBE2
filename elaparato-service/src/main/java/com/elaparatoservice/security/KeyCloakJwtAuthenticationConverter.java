@@ -28,6 +28,7 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
         resourcesRoles.addAll(extractRoles("resource_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
         resourcesRoles.addAll(extractRolesRealmAccess("realm_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
         resourcesRoles.addAll(extractAud("aud", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
+        //System.out.println("Roles: "+resourcesRoles); //para poder ver los Roles en consola y chequear Roles
         return resourcesRoles;
     }
 
