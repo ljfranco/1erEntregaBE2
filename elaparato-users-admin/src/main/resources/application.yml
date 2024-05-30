@@ -1,0 +1,20 @@
+server:
+    port: 8181
+    servlet:
+        context-path: /admin
+spring:
+    application:
+        name: elaparatoUsersAdmin
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://localhost:8080/realms/el-aparato-Franco-Leonardo
+
+elaparato:
+    keycloak:
+        serverUrl: http://localhost:8080
+        realm: el-aparato-Franco-Leonardo
+        clientId: api-elaparato-users-client
+        clientSecret: pshU3HfEcnqHgNkNnCAGrbnTXd33YEF6
+
