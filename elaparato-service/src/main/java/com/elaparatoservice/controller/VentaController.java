@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/elaparato/ventas")
 public class VentaController {
 
 
@@ -16,7 +17,7 @@ public class VentaController {
     private IVentaService ventServ;
 
     //crear una nueva venta
-    @PostMapping("/ventas/create")
+    @PostMapping("/create")
     @PreAuthorize("hasRole('ROLE_Vendedor') or hasRole('ROLE_Administrador')")
     public String createVentao(@RequestBody Venta vent) {
         ventServ.saveVenta(vent);
@@ -24,14 +25,14 @@ public class VentaController {
     }
 
     //obtener todas las ventas
-    @GetMapping("/ventas/getall")
+    @GetMapping("/getall")
     @PreAuthorize("hasRole('ROLE_Vendedor') or hasRole('ROLE_Administrador')")
     public List<Venta> getVentas () {
         return ventServ.getVentas();
     }
 
     //Modificar los datos de una venta
-    @PutMapping("/ventas/edit")
+    @PutMapping("/edit")
     @PreAuthorize("hasRole('ROLE_Vendedor') or hasRole('ROLE_Administrador')")
     public String editVenta(@RequestBody Venta vent) {
         ventServ.editVenta(vent);

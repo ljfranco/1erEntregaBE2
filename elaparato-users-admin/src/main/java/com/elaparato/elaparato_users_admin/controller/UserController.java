@@ -13,7 +13,7 @@ import com.elaparato.elaparato_users_admin.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/admin/users")
 public class UserController {
     @Autowired
     private UserService service;

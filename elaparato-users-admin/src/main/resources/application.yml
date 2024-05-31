@@ -1,7 +1,5 @@
 server:
     port: 8181
-    servlet:
-        context-path: /admin
 spring:
     application:
         name: elaparatoUsersAdmin
