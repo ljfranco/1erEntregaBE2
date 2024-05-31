@@ -1,4 +1,4 @@
-package com.elaparatoservice.security;
+package com.elaparato.elaparato_users_admin.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

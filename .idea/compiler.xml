@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="elaparato-gateway" />
         <module name="elaparato-service" />
+        <module name="elaparato-users-admin" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="elaparato-gateway" options="-parameters" />
       <module name="elaparato-service" options="-parameters" />
+      <module name="elaparato-users-admin" options="-parameters" />
     </option>
   </component>
 </project>

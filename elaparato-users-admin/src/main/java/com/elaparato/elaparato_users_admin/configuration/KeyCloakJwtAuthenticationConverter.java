@@ -1,4 +1,4 @@
-package com.elaparatoservice.security;
+package com.elaparato.elaparato_users_admin.configuration;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,26 +25,10 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
         Set<GrantedAuthority> resourcesRoles = new HashSet();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
-        //>>>>>No lo uso en mi caso solo manejo Roles de Reino<<<<<<
-        //resourcesRoles.addAll(extractRoles("resource_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
         resourcesRoles.addAll(extractRolesRealmAccess("realm_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
-        //>>>>>No lo uso en mi caso solo manejo Roles de Reino<<<<<<
-        //resourcesRoles.addAll(extractAud("aud", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
-        //System.out.println("Roles: "+resourcesRoles); //para poder ver los Roles en consola y chequear Roles
         return resourcesRoles;
     }
 
-    //>>>>>Metodo para extraer Roles de Cliente de un JWT - No lo uso en mi caso solo manejo Roles de Reino<<<<<<
-/*    private static List<GrantedAuthority> extractRoles(String route, JsonNode jwt) {
-        Set<String> rolesWithPrefix = new HashSet();
-        jwt.path(route).elements().forEachRemaining((e) -> {
-            e.path("roles").elements().forEachRemaining((r) -> {
-                rolesWithPrefix.add("ROLE_" + r.asText());
-            });
-        });
-        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList((String[])rolesWithPrefix.toArray(new String[0]));
-        return authorityList;
-    }*/
 
     private static List<GrantedAuthority> extractRolesRealmAccess(String route, JsonNode jwt) {
         Set<String> rolesWithPrefix = new HashSet();
@@ -55,15 +39,6 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
         return authorityList;
     }
 
-    //>>>>>No lo uso en mi caso solo manejo Roles de Reino<<<<<<
-/*    private static List<GrantedAuthority> extractAud(String route, JsonNode jwt) {
-        Set<String> rolesWithPrefix = new HashSet();
-        jwt.path(route).elements().forEachRemaining((e) -> {
-            rolesWithPrefix.add("AUD_" + e.asText());
-        });
-        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList((String[])rolesWithPrefix.toArray(new String[0]));
-        return authorityList;
-    }*/
 
     public KeyCloakJwtAuthenticationConverter() {
     }

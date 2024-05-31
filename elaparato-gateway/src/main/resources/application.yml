@@ -12,6 +12,10 @@ spring:
                 predicates:
                 - Path=/elaparato/**
                 uri: http://localhost:8081
+            -   id: keycloak-admin
+                predicates:
+                - Path=/admin/**
+                uri: http://localhost:8181
     security:
         oauth2:
             client:
