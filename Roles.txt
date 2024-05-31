@@ -1,0 +1,9 @@
+Use Roles de Reino:
+- Administrador (Permisos sobre Endpoints de Ventas,Productos y Usuarios)
+- Vendedor (Permisos sobre Endpoints de Ventas)
+- Repositor (Permisos sobre Endpoints de Productos)
+
+Endpoints base:
+/elaparato/ventas/ (CRUD Ventas)
+/elaparato/productos/ (CRUD Productos)
+/admin/users/ (CRUD Usuarios Keycloak)
