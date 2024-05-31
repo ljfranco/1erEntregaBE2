@@ -5,8 +5,28 @@ spring:
         name: elaparato-gateway
     cloud:
         gateway:
+            default-filters:
+            - TokenRelay
             routes:
             -   id: elaparato
                 predicates:
                 - Path=/elaparato/**
                 uri: http://localhost:8081
+            -   id: keycloak-admin
+                predicates:
+                - Path=/admin/**
+                uri: http://localhost:8181
+    security:
+        oauth2:
+            client:
+                provider:
+                    api-elaparato-gateway-provider:
+                        issuer-uri: http://localhost:8080/realms/el-aparato-Franco-Leonardo
+                registration:
+                    api-elaparato-gateway-client:
+                        authorization-grant-type: authorization_code
+                        client-id: api-elaparato-gateway-client
+                        client-secret: vPgvszRSkhD4e7ZffFrpzpCHfPGxugfo
+                        provider: api-elaparato-gateway-provider
+                        redirect-uri: http://localhost:9090/login/oauth2/code/keycloak
+                        scope: openid
